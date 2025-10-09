@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyFirstApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola Models</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="./controller.js"></script>
+  </head>
+  <body ng-controller="FirstController">
+    <!-- Ng Model es para hacer el two way binding entre la vista y el controlador -->
+    <input type="text" ng-model="nuevoComentario.comentario" />
+    <br />
+    <input type="text" ng-model="nuevoComentario.username" />
+    <br />
+    <!-- ng click es otra directiva que sirve para cuando el usuario haga click sobre ese elemento -->
+    <button ng-click="agregarComentario()">Agregar Comentario</button>
+    <h3>Comentarios</h3>
+    <ul>
+      <!-- Como un ngfor o un forEach, itera y hace usable el objeto que itera en la vista -->
+      <li ng-repeat="comentario in comentarios">
+        {{comentario.comentario}} - <strong>{{comentario.username}}</strong>
+      </li>
+    </ul>
+  </body>
+</html>
