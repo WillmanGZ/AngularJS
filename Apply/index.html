@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainModule">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+      angular
+        .module("mainModule", [])
+        .controller("FirstController", function ($scope) {
+          $scope.nombre = "Willman";
+          setTimeout(function () {
+            $scope.nombre = "Angular";
+            console.log($scope.nombre);
+            // Solucion sencilla para llamar a digest, para que itere los watchers y digest pueda actualizar en caso de cambios
+            // Si no se usa apply o digest, angular no reconocerá los cambios debido a que el angular context no vive adentro del setTimeout
+            /* $scope.$digest(); */
+
+            // Solución correcta, usar apply, ya que apply es el que debe llamar a digest
+            $scope.$apply();
+          }, 2000);
+
+          /*    //Esto tambien aplica para los eventos que no se gestionan mediante angular
+          document
+            .querySelector("#mi_boton")
+            .addEventListener("click", function () {
+              // Podemos usar la función dentro del apply directamente
+              $scope.$apply(function () {
+                $scope.nombre = "Willman Giraldo";
+                console.log($scope.nombre);
+              });
+            }); */
+        });
+    </script>
+  </head>
+  <body ng-controller="FirstController">
+    <h1>{{nombre}}</h1>
+    <!-- Manera usando los eventos de JS -->
+    <!-- <button id="mi_boton">Haz click</button> -->
+    <!-- Manera correcta usando angular directives -->
+    <button ng-click="nombre = 'Willman Giraldo'">Haz click</button>
+  </body>
+</html>
