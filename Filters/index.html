@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainModule">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filters</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="controller.js"></script>
+  </head>
+  <body ng-controller="FiltersController">
+    <!-- El | es como los pipes, solo que aca se le llaman filtros -->
+    {{miHtml | removeHtml}}
+    <!-- Ademas, hay varios mas que angular trae por defecto, como por ejemplo date, currency o json -->
+     <p>{{costo | currency: 'COP '}}</p>
+  </body>
+</html>
