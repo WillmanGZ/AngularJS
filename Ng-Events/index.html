@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+      .hover {
+        background-color: red;
+      }
+
+      .no-hover {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      ng-mouseover="bandera = true"
+      ng-mouseout="bandera = false"
+      ng-class="{'hover': bandera, 'no-hover': !bandera}"
+    >
+      Hover me
+    </button>
+    <span ng-show="bandera"><- Click me</span>
+    <p>{{bandera | json}}</p>
+  </body>
+</html>
